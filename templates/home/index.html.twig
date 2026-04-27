@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<section class="flex h-screen">
+    <div class="sidebar flex-1 bg-red-200">
+        <div class="flex gap-2">
+            <i class="fa-solid fa-house"></i>
+            <h1 class="">Toutes les tâches</h1>
+        </div>
+        <h1>Dossiers</h1>
+        <div class="flex  gap-2">
+            <i class="fa-regular fa-folder"></i>
+            <p>Maison</p>
+
+        </div>
+
+    </div>
+
+    <div class="content flex-9 ">
+
+        <div class="flex justify-between text-1xl">
+            <div>
+                <h1 class="text-2xl font-normal">Gestion de tâches</h1>
+                <p>Organisser votre journée efficacement</p>
+            </div>
+            <div class="flex gap-2">
+                <i class="fa-solid fa-gear"></i>
+                <p>Gérer les Priorités</p>
+                <p>Nouveaux dossiers</p>
+                <a class="border rounded-2xl" href="{{ path('app_task_new') }}">
+                    <i class="fa-solid fa-plus"></i>
+                    Nouvelle tâches</a>
+                <p>Nouvelle tache</p>
+                <a class="border rounded-2xl" href="{{ logout_path() }}">
+                    Déconnexion</a>
+            </div>
+
+        </div>
+
+
+
+        <div class="flex bg-gray-50 border-b border-gray-200">
+            <div class="flex gap-2">
+                <i class="fa-solid fa-filter"></i>
+                Filtre:
+                <label for="" class="text-[#0A0A0A]">Statut</label>
+                <select name="" id="" class="bg-[#F3F3F5] px-3 py-3 w-2xs rounded-2xl">
+                    <option value="haha">Validé</option>
+                    <option value="haha">En cours</option>
+                    <option value="haha">Tous</option>
+                </select>
+            </div>
+            <label for="" class="text-[#0A0A0A] ">Priorités</label>
+            <select name="" id="" class="bg-[#F3F3F5] px-3 py-3 w-2xs rounded-2xl">
+                <option value="haha">En cours</option>
+                <option value="haha">Validé</option>
+                <option value="haha">Toutes</option>
+            </select>
+
+        </div>
+
+
+
+
+        <div class="container-task flex flex-col items-start  text-2xl  ">
+
+            {%for task in tasks%}
+            <div class="task  flex justify-around">
+                <div class="flex gap-2  ">
+                    <input type="checkbox" class="w-10 h-10 ">
+                    <p>{{task.name}}</p>
+                    <button class="bg-blue-600 border rounded-2xl">normal</button>
+                </div>
+                <i class="fa-solid fa-thumbtack pl-100"></i>
+            </div>
+            <p class="pl-10 ">{{task.status}}</p>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

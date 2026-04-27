@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+    <div class="border rounded-2xl flex flex-col">
+        
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name,{attr:{class:"text-red-500"}}) }}
+        {{ form_label(form.status) }}
+        {{ form_widget(form.status,{attr:{class:"text-red-500"}}) }}
+    
+
+
+    </div>
+
+    <button class="btn">{{ button_label|default('Créer') }}</button>
+{{ form_end(form) }}
