@@ -4,17 +4,25 @@
 
 {% block body %}
 <section class="flex h-screen">
-    <div class="sidebar flex-1 bg-red-200">
+    <div class="sidebar flex-1 border border-black/10 rounded-[14px]">
         <div class="flex gap-2">
             <i class="fa-solid fa-house"></i>
             <h1 class="">Toutes les tâches</h1>
         </div>
         <h1>Dossiers</h1>
-        <div class="flex  gap-2">
-            <i class="fa-regular fa-folder"></i>
-            <p>Maison</p>
 
+
+        <div class="flex flex-col gap-2">
+            {% for dossier in dossiers%}
+            <a class="flex gap-2">
+                <i class="fa-solid fa-circle fa-beat-fade" style="color: rgb(24, 251, 65);"></i>
+                <i class="fa-regular fa-folder"></i>
+                {{dossier.name}}
+                {{dossier.id}}
+            </a>
+            {%endfor%}
         </div>
+
 
     </div>
 
@@ -28,11 +36,12 @@
             <div class="flex gap-2">
                 <i class="fa-solid fa-gear"></i>
                 <p>Gérer les Priorités</p>
-                <p>Nouveaux dossiers</p>
+                <a class="border rounded-2xl" href="{{ path('app_dossier_new') }}">
+                    <i class="fa-solid fa-plus"></i>
+                    Nouveau Dossiers</a>
                 <a class="border rounded-2xl" href="{{ path('app_task_new') }}">
                     <i class="fa-solid fa-plus"></i>
                     Nouvelle tâches</a>
-                <p>Nouvelle tache</p>
                 <a class="border rounded-2xl" href="{{ logout_path() }}">
                     Déconnexion</a>
             </div>
@@ -43,7 +52,7 @@
 
         <div class="flex bg-gray-50 border-b border-gray-200">
             <div class="flex gap-2">
-                <i class="fa-solid fa-filter"></i>
+                <i class="fa-solid fa-filter "></i>
                 Filtre:
                 <label for="" class="text-[#0A0A0A]">Statut</label>
                 <select name="" id="" class="bg-[#F3F3F5] px-3 py-3 w-2xs rounded-2xl">
@@ -64,10 +73,10 @@
 
 
 
-        <div class="container-task flex flex-col items-start  text-2xl  ">
+        <div class="container-task flex flex-col items-start    ">
 
             {%for task in tasks%}
-            <div class="task  flex justify-around">
+            <div class="task  flex justify-around ">
                 <div class="flex gap-2  ">
                     <input type="checkbox" class="w-10 h-10 ">
                     <p>{{task.name}}</p>
